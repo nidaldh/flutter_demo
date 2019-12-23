@@ -4,6 +4,8 @@ import 'package:instagram_demo/screens/feed_screen.dart';
 import 'package:instagram_demo/screens/login_screen.dart';
 import 'package:instagram_demo/screens/signup_screen.dart';
 
+import 'screens/auto_complete .dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -27,7 +29,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: _getScreenId(),
+//      home: _getScreenId(),
+      home: CompliteDemo(),
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         SignupScreen.id: (context) => SignupScreen(),

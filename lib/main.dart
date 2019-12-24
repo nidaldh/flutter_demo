@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_demo/screens/feed_screen.dart';
 import 'package:instagram_demo/screens/login_screen.dart';
 import 'package:instagram_demo/screens/signup_screen.dart';
+import 'package:instagram_demo/services/cofig_php.dart';
 
 import 'screens/auto_complete .dart';
 
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
 //      home: _getScreenId(),
-      home: CompliteDemo(),
+//      home: CompliteDemo(),
+      home: ConfigPHP(),
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         SignupScreen.id: (context) => SignupScreen(),

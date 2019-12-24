@@ -6,6 +6,7 @@ import 'feed_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static final String id = 'login_screen';
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -22,7 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
       /// login with user and password to firebase
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

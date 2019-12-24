@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_demo/screens/email_form.dart';
 import 'package:instagram_demo/screens/feed_screen.dart';
 import 'package:instagram_demo/screens/login_screen.dart';
 import 'package:instagram_demo/screens/signup_screen.dart';
@@ -31,8 +32,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
 //      home: _getScreenId(),
+      home: EmailForm(),
 //      home: CompliteDemo(),
-      home: ConfigPHP(),
+//      home: ConfigPHP(),
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         SignupScreen.id: (context) => SignupScreen(),

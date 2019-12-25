@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_demo/screens/email_form.dart';
 import 'package:instagram_demo/screens/feed_screen.dart';
 import 'package:instagram_demo/screens/login_screen.dart';
+import 'package:instagram_demo/screens/main_screen.dart';
 import 'package:instagram_demo/screens/signup_screen.dart';
 import 'package:instagram_demo/services/cofig_php.dart';
 
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
 //      home: _getScreenId(),
-      home: EmailForm(),
+//      home: EmailForm(),
+      home: TileApp(),
 //      home: CompliteDemo(),
 //      home: ConfigPHP(),
       routes: {

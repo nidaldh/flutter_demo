@@ -15,7 +15,6 @@ class _EmailFormState extends State<EmailForm> {
   List<Company> _companies = Company.getCompanies();
   List<DropdownMenuItem<Company>> _dropdownMenuItems;
   Company _selected;
-
   chooseImage() {
     setState(() {
       file = ImagePicker.pickImage(source: ImageSource.gallery);
@@ -23,22 +22,25 @@ class _EmailFormState extends State<EmailForm> {
   }
 
   @override
-  void initState() {
+  void initState(){
     _dropdownMenuItems = buildDropdownMenuItems(_companies);
-    _selected = _dropdownMenuItems[0].value;
+    _selected= _dropdownMenuItems[0].value;
     super.initState();
   }
 
-  List<DropdownMenuItem<Company>> buildDropdownMenuItems(List company) {
-    List<DropdownMenuItem<Company>> items = List();
-    for (Company c in company) {
-      items.add(DropdownMenuItem(
-        value: c,
-        child: Text(c.name),
-      ));
+  List<DropdownMenuItem<Company>> buildDropdownMenuItems(List company){
+    List<DropdownMenuItem<Company>> items= List();
+    for(Company c in company){
+      items.add(
+        DropdownMenuItem(
+          value: c,
+          child: Text(c.name),
+        )
+      );
     }
     return items;
   }
+
 
   Widget showImage() {
     return FutureBuilder<File>(
@@ -66,13 +68,11 @@ class _EmailFormState extends State<EmailForm> {
       },
     );
   }
-
-  void onChangeDropdownItem(Company newSelected) {
-    setState(() {
-      _selected = newSelected;
-    });
+  void onChangeDropdownItem(Company newSelected){
+  setState(() {
+    _selected = newSelected;
+  });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,21 +85,12 @@ class _EmailFormState extends State<EmailForm> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-//              Row(
-//                children: <Widget>[
-//                  Text("أسم الطالب"),
-//                  Padding(
-//                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-//                    child: DropdownButton(
-////                hint: Text("name"),
-//                      isExpanded: true,
-//                      value: _selected,
-//                      items: _dropdownMenuItems,
-//                      onChanged: onChangeDropdownItem,
-//                    ),
-//                  ),
-//                ],
-//              ),
+              DropdownButton(
+                isExpanded: true,
+                value: _selected,
+                items: _dropdownMenuItems,
+                onChanged: onChangeDropdownItem,
+              ),
               TextField(
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration(
@@ -161,17 +152,18 @@ class _EmailFormState extends State<EmailForm> {
   }
 }
 
-class Company {
+class Company{
   int id;
   String name;
 
-  Company(this.id, this.name);
+  Company(this.id,this.name);
 
-  static List<Company> getCompanies() {
+  static List<Company> getCompanies(){
     return <Company>[
-      Company(1, "نضال"),
-      Company(2, "مناع"),
-      Company(3, "مصطفى")
+      Company(1,"Nidal"),
+      Company(2,"manna"),
+      Company(3,"stef")
     ];
   }
+
 }

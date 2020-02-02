@@ -116,7 +116,8 @@ import 'improt_from_test_bloc/home_screen.dart';
 import 'improt_from_test_bloc/screen/login_screen.dart';
 import 'improt_from_test_bloc/simple_bloc_delegate.dart';
 import 'improt_from_test_bloc/splash_screen.dart';
-
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 ///App will be a StatelessWidget and be responsible for reacting to
@@ -132,7 +133,7 @@ void main() {
     BlocProvider(
       create: (context) => AuthenticationBloc(userRepository: userRepository)
         ..add(AppStarted()),
-      child: App(userRepository: userRepository),
+      child: EasyLocalization(child: App(userRepository: userRepository)),
     ),
   );
 }
@@ -148,19 +149,31 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-        builder: (context, state) {
-          if (state is Uninitialized) {
-            return SplashScreen();
-          }
-          if (state is Unauthenticated) {
-            return LoginScreen(userRepository: _userRepository);
-          }
-          if (state is Authenticated) {
-            return HomeScreen(name: state.displayName);
-          }
-        },
+    var data= EasyLocalizationProvider.of(context).data;
+    return EasyLocalizationProvider(
+      data: data,
+      child: MaterialApp(
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          EasylocaLizationDelegate(
+            locale: data.locale,
+            path: 'assets/language'
+          )
+        ],
+        supportedLocales: [Locale('en','US'),Locale('ar','DZ')],
+        locale: data.savedLocale,
+        home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          builder: (context, state) {
+            if (state is Uninitialized) {
+              return SplashScreen();
+            }
+            if (state is Authenticated) {
+              return HomeScreen(name: state.displayName);
+            }
+              return LoginScreen(userRepository: _userRepository);
+          },
+        ),
       ),
     );
   }
